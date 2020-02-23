@@ -59,9 +59,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+            
             glideVector = (Vector3.forward  - Vector3.up).normalized * glideSpeed;
             GetComponent<Rigidbody>().velocity = glideVector;
+            
+         
                 
             transform.Rotate(xRot, 0f, 0f);
             Debug.Log("Gliding.");
@@ -76,5 +78,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        speed = 0f;
+        glideSpeed = 0f;
+        Debug.Log("You lost.");
     }
 }
