@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float flaps = 0;
     float speed = 15f;
-    float glideSpeed = 500f;
+    float glideSpeed = 20f;
     float flapHeight = 2f;
     Vector3 flapVector;
     Vector3 glideVector;
@@ -60,17 +60,17 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            glideVector = (Vector3.forward * glideSpeed - Vector3.up).normalized;
+            glideVector = (Vector3.forward  - Vector3.up).normalized * glideSpeed;
             GetComponent<Rigidbody>().velocity = glideVector;
                 
             transform.Rotate(xRot, 0f, 0f);
             Debug.Log("Gliding.");
-            glideSpeed += 2f;
+            glideSpeed += 0.2f;
             
         }
         if(Input.GetKeyUp(KeyCode.E))
         {
-            glideSpeed = 3f;
+           // glideSpeed = 3f;
            
             transform.Rotate(0f, 0f, 0f);
         }
