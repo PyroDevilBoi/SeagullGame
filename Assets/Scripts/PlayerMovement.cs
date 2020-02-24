@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 glideVector;
     int pressed = 0;
     float xRot = 0.2f;
+    bool lost = false;
     public CharacterController controller;
     
     // Start is called before the first frame update
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void glide()
     {
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.E) && !lost)
         {
 
 
@@ -85,5 +86,6 @@ public class PlayerMovement : MonoBehaviour
         speed = 0f;
         glideSpeed = 0f;
         Debug.Log("You lost.");
+        lost = true;
     }
 }
