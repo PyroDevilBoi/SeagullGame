@@ -98,9 +98,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        speed = 0f;
-        glideSpeed = 0f;
-        Debug.Log("You lost.");
-        lost = true;
+        if (other.gameObject.tag == "Map")
+        {
+            speed = 0f;
+            glideSpeed = 0f;
+            Debug.Log("You lost.");
+            lost = true;
+        }
     }
 }
